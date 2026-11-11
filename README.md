@@ -2,6 +2,9 @@
 
 Sitio web de una página para el taller **O3D**, con cotizador automático, contacto por WhatsApp y una escena animada de impresoras 3D de las que saltan objetos impresos.
 
+**Sitio publicado:** https://od3tomy.github.io/o3d/  
+**Repositorio:** https://github.com/od3tomy/o3d
+
 Hecho con **HTML + CSS + JavaScript puro**. Sin frameworks, sin build, sin dependencias.
 
 > La animación de las impresoras y los objetos que saltan está hecha con un `<canvas>` real dentro del hero (`js/scene.js`), no con un video ni con una imagen.
@@ -37,6 +40,9 @@ OD3/
 ├── assets/
 │   ├── favicon.svg
 │   ├── logo.svg
+│   ├── qr-o3d.png
+│   ├── qr-o3d-plain.png
+│   ├── qr-o3d.svg
 │   └── img/
 │       └── taller.webp
 └── README.md
@@ -135,23 +141,38 @@ Para cambiar la cantidad de impresoras o su posición, edita `applyLayout()` y e
 
 ---
 
-## Publicar
+## Compartir
 
-Cualquier hosting estático sirve:
+- **Link:** https://od3tomy.github.io/o3d/
+- **QR con marca:** [`assets/qr-o3d.png`](assets/qr-o3d.png)
+- **QR plano:** [`assets/qr-o3d-plain.png`](assets/qr-o3d-plain.png)
+- **QR vectorial (imprimir):** [`assets/qr-o3d.svg`](assets/qr-o3d.svg)
 
-### Netlify (arrastrar y soltar)
-1. Entra a [netlify.com/drop](https://app.netlify.com/drop).
-2. Arrastra la carpeta `OD3` completa.
-3. Listo.
+![QR para abrir O3D](assets/qr-o3d.png)
 
-### Vercel
+---
+
+## Publicar y actualizar
+
+El sitio está publicado con **GitHub Pages** desde la rama `main`, carpeta raíz. Cada push a `main` reconstruye la página en 1–2 minutos.
+
+Para publicar cambios:
+
 ```bash
-npx vercel
+git add .
+git commit -m "Describe el cambio"
+git push
 ```
 
-### GitHub Pages
-1. Sube el contenido a un repositorio.
-2. Settings → Pages → Deploy from branch → `main` / root.
+La URL pública es:
+
+```
+https://od3tomy.github.io/o3d/
+```
+
+### Otros hostings
+
+También funciona en Netlify (arrastrar la carpeta), Vercel (`npx vercel`) o cualquier servidor estático.
 
 ### Dominio propio
 Apunta el dominio al hosting y actualiza las etiquetas `og:image` y `og:url` en `index.html` cuando tengas la URL final.
