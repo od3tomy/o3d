@@ -43,6 +43,7 @@ OD3/
 │   ├── qr-o3d.png
 │   ├── qr-o3d-plain.png
 │   ├── qr-o3d.svg
+│   ├── estado-whatsapp-o3d.png
 │   └── img/
 │       └── taller.webp
 └── README.md
@@ -95,7 +96,9 @@ urgencia      = (subtotal con descuento + acabado) × 35% si es exprés
 total         = subtotal + acabado + urgencia + envío
 ```
 
-El resultado se redondea a los $500 más cercanos y se muestra con un rango de **±10%**. Si el total queda por debajo de `minOrder`, se aplica el pedido mínimo.
+El resultado se redondea a los $500 más cercanos y se muestra con un rango de **±10%**. Si el total queda por debajo de `minOrder`, se aplica un ajuste interno de producción.
+
+> La tabla pública de materiales muestra solo el material y su uso recomendado. Los precios por gramo y los mínimos se usan internamente en el cotizador.
 
 ### Peso por dimensiones
 
@@ -143,12 +146,16 @@ Para cambiar la cantidad de impresoras o su posición, edita `applyLayout()` y e
 
 ## Compartir
 
-- **Link:** https://od3tomy.github.io/o3d/
+- **Link directo:** https://od3tomy.github.io/o3d/
+- **Link corto:** https://is.gd/o3dco
+- **Imagen vertical para estado de WhatsApp:** [`assets/estado-whatsapp-o3d.png`](assets/estado-whatsapp-o3d.png)
 - **QR con marca:** [`assets/qr-o3d.png`](assets/qr-o3d.png)
 - **QR plano:** [`assets/qr-o3d-plain.png`](assets/qr-o3d-plain.png)
 - **QR vectorial (imprimir):** [`assets/qr-o3d.svg`](assets/qr-o3d.svg)
 
 ![QR para abrir O3D](assets/qr-o3d.png)
+
+> El QR de la imagen de estado apunta al link corto `is.gd/o3dco`. Para tener un dominio 100 % propio (por ejemplo `o3d.co`) hay que comprarlo y conectarlo a GitHub Pages.
 
 ---
 
@@ -182,7 +189,7 @@ Apunta el dominio al hosting y actualiza las etiquetas `og:image` y `og:url` en 
 ## Checklist antes de publicar
 
 - [ ] Reemplazar el número de WhatsApp si cambia.
-- [ ] Revisar precios y pedido mínimo (`js/config.js`).
+- [ ] Revisar precios y ajustes internos (`js/config.js`).
 - [ ] Cambiar testimonios, estadísticas y año de fundación por datos reales.
 - [ ] Revisar horarios, envíos, garantía y formas de pago de las preguntas frecuentes.
 - [ ] Probar el cotizador en celular y enviar una cotización de prueba a WhatsApp.

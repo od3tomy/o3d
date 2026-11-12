@@ -14,7 +14,7 @@ window.OD3 = {
   locale: "es-CO",
   currency: "COP",
 
-  // Pedido mínimo y recargos
+  // Ajustes internos de precio y recargos (no se muestran en la web)
   minOrder: 15000,
   expressFee: 0.35,
 

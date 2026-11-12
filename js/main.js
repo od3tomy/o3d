@@ -8,8 +8,6 @@
   const $ = (s, ctx) => (ctx || document).querySelector(s);
   const $$ = (s, ctx) => Array.from((ctx || document).querySelectorAll(s));
 
-  const money = (n) => "$" + Math.round(n).toLocaleString("es-CO");
-
   /* ---------- WhatsApp ---------- */
   const defaultMsg = "Hola O3D 👋 Quiero cotizar una impresión 3D. ¿Me ayudan?";
   $$("[data-wa]").forEach((a) => {
@@ -77,13 +75,11 @@
         (m) => `<tr>
           <td><strong>${m.name}</strong><small>${m.desc}</small></td>
           <td>${m.use}</td>
-          <td class="price-cell">${money(m.pricePerGram)}<span>/g</span></td>
-          <td>${money(m.min)}</td>
         </tr>`
       )
       .join("");
     const note = $("#tableNote");
-    if (note) note.textContent = techLabels[tech] + " · Precios de referencia en COP.";
+    if (note) note.textContent = techLabels[tech] + " · Materiales disponibles.";
   }
 
   tabs.forEach((tab) => {

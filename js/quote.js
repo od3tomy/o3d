@@ -38,10 +38,8 @@
     range:        $("#qRange"),
     grams:        $("#qGrams"),
     delivery:     $("#qDelivery"),
-    minOrder:     $("#qMinOrder"),
     breakdown:    $("#qBreakdown"),
     weightHint:   $("#qWeightHint"),
-    minNote:      $("#qMinNote"),
     wa:           $("#qWa"),
     copy:         $("#qCopy")
   };
@@ -152,10 +150,10 @@
     const shipping = shippingOpt();
     let total = afterDiscount + finishCost + urgencyCost + shipping.price;
 
-    let minNote = "";
+    let minOrderAdjust = 0;
     if (total < C.minOrder) {
+      minOrderAdjust = C.minOrder - total;
       total = C.minOrder;
-      minNote = "Se aplicó el pedido mínimo de " + money(C.minOrder) + ".";
     }
 
     total = Math.round(total / 500) * 500;
@@ -169,16 +167,16 @@
     return {
       m, isResin, qty, grams, materialCost, machineCost, hours, unit, minAdjust,
       discount, discountAmount, afterDiscount, finish, finishCost,
-      urg, urgencyCost, shipping, total, low, high, minNote, delivery,
+      urg, urgencyCost, shipping, total, low, high, minOrderAdjust, delivery,
       useDims
     };
   }
 
   function rowsFor(q) {
     const rows = [];
-    rows.push(["Material", money(q.materialCost), money(q.grams.toFixed(0)) + " g × " + money(q.m.pricePerGram) + "/g"]);
+    rows.push(["Material", money(q.materialCost), Math.round(q.grams) + " g"]);
     if (q.minAdjust > 0) {
-      rows.push(["Mínimo por pieza", money(q.minAdjust), "ajuste al mínimo de " + q.m.name]);
+      rows.push(["Costo base por pieza", money(q.minAdjust), "ajuste de producción"]);
     }
     rows.push(["Tiempo de máquina", money(q.machineCost), q.hours.toFixed(1) + " h de impresión"]);
     rows.push(["Mano de obra", money(q.m.labor), "preparación y control"]);
@@ -193,6 +191,9 @@
     }
     if (q.shipping.price > 0) {
       rows.push([q.shipping.label, money(q.shipping.price), ""]);
+    }
+    if (q.minOrderAdjust > 0) {
+      rows.push(["Ajuste de producción", money(q.minOrderAdjust), "pieza pequeña"]);
     }
     return rows;
   }
@@ -232,9 +233,6 @@
     els.range.textContent = "Rango orientativo " + money(q.low) + " – " + money(q.high);
     els.grams.textContent = Math.round(q.grams) + " g";
     els.delivery.textContent = q.delivery;
-    if (els.minOrder) els.minOrder.textContent = money(C.minOrder);
-    els.minNote.textContent = q.minNote;
-    els.minNote.hidden = !q.minNote;
 
     els.breakdown.innerHTML = rowsFor(q)
       .map(

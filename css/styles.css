@@ -1195,7 +1195,7 @@ button {
 
 .price-table {
   width: 100%;
-  min-width: 680px;
+  min-width: 520px;
   border-collapse: collapse;
 }
 
@@ -1243,20 +1243,6 @@ button {
   font-size: 10.5px;
   line-height: 1.45;
   color: #7a7a80;
-}
-
-.price-table .price-cell {
-  font-size: 15px;
-  font-weight: 700;
-  color: #c93d00;
-  white-space: nowrap;
-}
-
-.price-table .price-cell span {
-  margin-left: 1px;
-  font-size: 9px;
-  font-weight: 500;
-  color: #8c8c92;
 }
 
 .materials__foot {
@@ -2951,14 +2937,9 @@ button {
     grid-auto-rows: 170px;
   }
 
-  /* Tabla compacta: en móvil mostramos material, precio y mínimo. */
+  /* Tabla compacta en móvil */
   .price-table {
     min-width: 0;
-  }
-
-  .price-table th:nth-child(2),
-  .price-table td:nth-child(2) {
-    display: none;
   }
 
   .price-table th,
@@ -2980,14 +2961,6 @@ button {
 
   .price-table td small {
     font-size: 9.5px;
-  }
-
-  .price-table .price-cell {
-    font-size: 13.5px;
-  }
-
-  .price-table .price-cell span {
-    font-size: 8px;
   }
 
   .tile--gear,
